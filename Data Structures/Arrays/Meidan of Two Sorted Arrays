@@ -1,0 +1,31 @@
+public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m=nums1.length;
+        int n=nums2.length;
+        int[] ans= new int[m+n];
+        int a=0,b=0;
+        for(int i=0;i<m+n;i++){
+            if(a<m&&b<n){
+            if(nums1[a]<=nums2[b]){
+                ans[i]=nums1[a];
+                a++;
+            }
+            else{
+                ans[i]=nums2[b];
+                b++;
+            }
+            }
+            else {
+                if(a==m){
+                    ans[i]=nums2[b];b++;
+                }
+                else{
+                    ans[i]=nums1[a];a++;
+                }
+            }
+            
+        }
+        int mid=(m+n)/2;
+        if((m+n)%2==0)
+            return (double)(ans[mid]+ans[mid-1])/2;
+        else return (double)ans[mid];
+    }

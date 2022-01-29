@@ -1,0 +1,8 @@
+public int[] twoSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        for(int i=0,j=nums.length-1;i<j;){
+            if(nums[i]+nums[j]==target)return new int[]{i,j};
+            else if(nums[i]+nums[j]<target)i++;
+        }     
+        return new int[]{};
+    }
