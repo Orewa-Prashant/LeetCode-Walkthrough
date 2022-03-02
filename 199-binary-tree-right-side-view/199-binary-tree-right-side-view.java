@@ -23,7 +23,7 @@ class Solution {
         if(root==null)return;
         if(level>=ans.size())
         ans.add(root.val);
-        fun(root.right,ans,level+1);  // Just traverse the righ subtree first and everything is daijobu ( fine ).
+        fun(root.right,ans,level+1);  // Just traverse the right subtree first and everything is daijobu ( fine ).
         fun(root.left,ans,level+1);
     }
 }
