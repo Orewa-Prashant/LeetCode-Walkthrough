@@ -116,7 +116,6 @@ class Solution {
         if(root.left==null && root.right==null ){
             if(root.data==sum)
             return true;
-            else return false;
         }
         
         boolean left=fun(root.left,sum-root.data);
