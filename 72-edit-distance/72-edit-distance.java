@@ -21,7 +21,7 @@ class Solution {
         if(dp[i][j]!=-1)return dp[i][j];
         
         if(s.charAt(i)==t.charAt(j))
-            return dp[i][j]=Math.min(fun(s,t,i-1,j-1,dp),1+fun(s,t,i-1,j,dp));
+            return dp[i][j]=fun(s,t,i-1,j-1,dp);
         return dp[i][j]=1+Math.min(Math.min(fun(s,t,i-1,j,dp),fun(s,t,i-1,j-1,dp)),fun(s,t,i,j-1,dp));
     }
 } 
