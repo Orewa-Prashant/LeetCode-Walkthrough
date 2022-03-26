@@ -1,18 +1,10 @@
 class Solution {
     public int minDistance(String word1, String word2) {
         int m=word1.length(),n=word2.length();
-        if(m>n){
-            int[][] dp=new int[m][n];
-            for(int[] ar:dp)
-                Arrays.fill(ar,-1);
-            return fun(word1,word2,m-1,n-1,dp);
-        }
-        else{
-            int[][] dp=new int[n][m];
-            for(int[] ar:dp)
-                Arrays.fill(ar,-1);
-            return fun(word2,word1,n-1,m-1,dp);
-        }
+        int[][] dp=new int[m][n];
+        for(int[] ar:dp)
+            Arrays.fill(ar,-1);
+        return fun(word1,word2,m-1,n-1,dp);
     }
     int fun(String s, String t, int i, int j, int[][] dp){
         if(j<0)return i+1;
