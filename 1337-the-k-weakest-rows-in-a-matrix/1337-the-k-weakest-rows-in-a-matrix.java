@@ -1,30 +1,34 @@
+class Pair implements Comparable<Pair>  {
+    int count;
+    int i;
+    Pair (int count,int i) {
+        this.count = count;
+        this.i = i;
+    }
+    public int compareTo (Pair p) {
+        if (count == p.count)
+            return this.i - p.i;
+        return this.count - p.count;
+    }
+}
 class Solution {
     public int[] kWeakestRows(int[][] mat, int k) {
-        HashMap<Integer,List<Integer>> h=new HashMap<>();
-        int min=Integer.MAX_VALUE,max=0;
-        int m=mat.length,n=mat[0].length;
-        for(int i=0;i<m;i++){
-            int count=0;
-            for(int j=0;j<n;j++){
-                count+=mat[i][j];
+        int n = mat.length;
+        int m = mat[0].length;
+        int[] ar = new int[k];
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        for (int i = 0;i < n;i++) {
+            int j;
+            for (j = 0;j < m;j++) {
+                if (mat[i][j] == 0)
+                    break;
             }
-            min=Math.min(min,count);
-            max=Math.max(max,count);
-            if(!h.containsKey(count))
-            h.put(count,new ArrayList<Integer>());
-            h.get(count).add(i);
+            int k1 = (j == 0) ? 0 : j + 1;
+            pq.add (new Pair(k1,i));
         }
-        int[] ans=new int[k];
-        int j=0;
-        for(int i=min;j<k;i++){
-            if(!h.containsKey(i))continue;
-            for(int p=0;p<h.get(i).size();p++){
-                if(j==k)break;
-                ans[j++]=h.get(i).get(p);
-            }
-            if(j==k)break;
-            
-        }
-        return ans;
+        int i = 0;
+        while (k-- > 0) 
+            ar[i++] = pq.poll().i;
+        return ar;
     }
 }
