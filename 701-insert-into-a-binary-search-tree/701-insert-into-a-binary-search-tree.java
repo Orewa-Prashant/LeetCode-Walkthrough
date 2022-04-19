@@ -17,20 +17,12 @@ class Solution {
     public TreeNode insertIntoBST(TreeNode root, int val) {
         if(root==null){
             TreeNode newNode=new TreeNode(val);
+            
             return newNode;
         }
-        fun(root,val,null,false);
-        return root;
-    }
-    void fun(TreeNode root, int val,TreeNode parent,boolean dir){
-        if(root==null){
-            TreeNode newNode=new TreeNode(val);
-            if(dir)parent.right=newNode;
-            else parent.left=newNode;
-            return;
-        }
         
-        if(root.val<val)fun(root.right,val,root,true);
-        if(root.val>val)fun(root.left,val,root,false); 
+        if(root.val<val)root.right=insertIntoBST(root.right,val);
+        if(root.val>val)root.left=insertIntoBST(root.left,val); 
+        return root;
     }
 }
