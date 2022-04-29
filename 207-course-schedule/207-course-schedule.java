@@ -22,9 +22,11 @@ class Solution {
     }
     
     boolean dfs(Map<Integer,List<Integer>> list, int node, boolean[] used, HashSet<Integer> h){
-        if(!list.containsKey(node)||h.contains(node))return true;
+        
         if(used[node])return false;
+        if(!list.containsKey(node)||h.contains(node))return true;
         used[node]=true;
+        
         for(int next:list.get(node)){
             if(!dfs(list,next,used,h))
                 return false;
