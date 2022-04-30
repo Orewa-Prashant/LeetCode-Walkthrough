@@ -20,9 +20,9 @@ class Solution {
         for(int i:list.get(s)){
             if(used[i])continue;
             b=b||dfs(i,d,list,used,dp);
-            if(b)return dp[s]=true;
+            //if(b)return dp[s]=true;
         }
         used[s]=false;
-        return dp[s]=false;
+        return dp[s]=b;
     }
 }
