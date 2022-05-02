@@ -1,22 +1,15 @@
 class Solution {
     public int minimumCardPickup(int[] nums) {
-        HashSet<Integer> h=new HashSet<>();
-        int j=0,i=0;
-        int min=Integer.MAX_VALUE;
-        for(;i<nums.length;i++){
-            if(h.contains(nums[i])){
-                while(nums[j]!=nums[i]){
-                    if(h.contains(nums[j]))
-                        h.remove(nums[j]);
-                    j++;
-                }
-                h.remove(nums[j]);
-                min=Math.min(min,i-j);
-                j++;
+        HashMap<Integer,Integer> h=new HashMap<>();
+        int j=0;
+        int res=Integer.MAX_VALUE;
+        for(int i=0;i<nums.length;i++){
+            if(h.containsKey(nums[i])){
+                res=Math.min(res,i-h.get(nums[i]));
             }
-            h.add(nums[i]);
+            h.put(nums[i],i);
         }
-        if(min==Integer.MAX_VALUE)return -1;
-        return min+1;
+        if(res==Integer.MAX_VALUE)return -1;
+        return res+1;
     }
 }
