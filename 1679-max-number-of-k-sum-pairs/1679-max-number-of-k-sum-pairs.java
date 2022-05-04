@@ -3,11 +3,7 @@ class Solution {
         HashMap<Integer,Integer> h=new HashMap<>();
         int res=0;
         for(int i:nums){
-            if(h.containsKey(k-i)){
-                if(h.get(k-i)==0){
-                    h.put(i,h.getOrDefault(i,0)+1);
-                    continue;
-                }
+            if(h.containsKey(k-i) && h.get(k-i)>0){
                 h.put(k-i,h.get(k-i)-1);
                 res++;
             }
