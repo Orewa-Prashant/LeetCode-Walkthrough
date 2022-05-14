@@ -14,7 +14,26 @@ class Solution {
         fun(root,null,map);
         HashSet<TreeNode> used=new HashSet<>();
         //System.out.println(map);
-        dfs(map,k,ans,target,used);
+        //dfs(map,k,ans,target,used);
+        Queue<TreeNode> q=new LinkedList<>();
+        q.offer(target);
+        while(!q.isEmpty()){
+            if(k==0){
+                while(!q.isEmpty()){
+                    ans.add(q.poll().val);
+                }
+            }
+            int s=q.size();
+            for(int i=0;i<s;i++){
+                TreeNode node=q.poll();
+                used.add(node);
+                for(TreeNode nd:map.get(node)){
+                    if(!used.contains(nd))
+                        q.offer(nd);
+                }
+            }
+            k--;
+        }
         return ans;
     }
     void fun(TreeNode root,TreeNode par, HashMap<TreeNode,List<TreeNode>> map){
