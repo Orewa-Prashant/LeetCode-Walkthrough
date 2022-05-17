@@ -13,13 +13,13 @@ class Solution {
     }
     
     public int maximumRemovals(String s, String p, int[] removable) {
-        int l=0,r=removable.length;
+        int l=0,r=removable.length-1;
         int ans=0;
         
         while(l<=r){
             int m=l+(r-l)/2;
             Set<Integer> h=new HashSet<>();
-            for(int i=0;i<m;i++)
+            for(int i=0;i<=m;i++)
                 h.add(removable[i]);
             if(fun(s,p,h)){
                 ans=Math.max(h.size(),ans);
