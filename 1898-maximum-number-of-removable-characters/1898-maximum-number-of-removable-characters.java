@@ -22,7 +22,7 @@ class Solution {
             for(int i=0;i<=m;i++)
                 h.add(removable[i]);
             if(fun(s,p,h)){
-                ans=Math.max(h.size(),ans);
+                ans=Math.max(m+1,ans);
                 l=m+1;
             }
             else r=m-1;
