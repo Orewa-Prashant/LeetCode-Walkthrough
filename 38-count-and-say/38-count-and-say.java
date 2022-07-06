@@ -16,14 +16,16 @@ class Solution {
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)!=prev){
                 if(prev!='-'){
-                    sb.append(ct+""+prev);
+                    sb.append(ct);
+                    sb.append(prev);
                 }
                 ct=1;
             }
             else ct++;
             prev=s.charAt(i);
         }
-        sb.append(ct+""+prev);
+        sb.append(ct);
+                    sb.append(prev);
         return sb.toString();
     }
 }
