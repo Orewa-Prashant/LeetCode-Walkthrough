@@ -9,7 +9,6 @@ class Solution {
         Stack<Character> st=new Stack<Character>();
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)=='*'){
-                if(st.size()>0)
                 st.pop();
             }
             else{
