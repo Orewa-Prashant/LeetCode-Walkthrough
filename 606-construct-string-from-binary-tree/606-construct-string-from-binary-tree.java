@@ -13,20 +13,14 @@
  *     }
  * }
  */
-class Solution {
-    public String tree2str(TreeNode root) {
-        if(root==null)return "";
-        String left=tree2str(root.left);
-        String right=tree2str(root.right);
-        if(left.equals("")&&right.equals("")){
-            return root.val+"";
-        }
-        else if(left.equals("")){
-            return root.val+"()("+right+")";
-        }
-        else if(right.equals("")){
-            return root.val+"("+left+")";
-        }
-        return root.val+"("+left+")("+right+")";
+public class Solution {
+    public String tree2str(TreeNode t) {
+        if(t==null)
+            return "";
+        if(t.left==null && t.right==null)
+            return t.val+"";
+        if(t.right==null)
+            return t.val+"("+tree2str(t.left)+")";
+        return t.val+"("+tree2str(t.left)+")("+tree2str(t.right)+")";   
     }
 }
