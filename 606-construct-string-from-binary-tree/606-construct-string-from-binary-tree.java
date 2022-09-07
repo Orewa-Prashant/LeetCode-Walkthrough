@@ -15,24 +15,18 @@
  */
 class Solution {
     public String tree2str(TreeNode root) {
-        StringBuilder sb=new StringBuilder();
-        preorder(root,null,sb);
-        sb.deleteCharAt(0);
-        sb.deleteCharAt(sb.length()-1);
-        return sb.toString();
-    }
-    void preorder(TreeNode root, TreeNode par, StringBuilder sb){
-        if(root==null){
-            return;
+        if(root==null)return "";
+        String left=tree2str(root.left);
+        String right=tree2str(root.right);
+        if(left.equals("")&&right.equals("")){
+            return root.val+"";
         }
-        if(par!=null && par.left==null){
-            sb.append("()");
+        else if(left.equals("")){
+            return root.val+"()("+right+")";
         }
-        sb.append('(');
-        sb.append(root.val+"");
-        //System.out.println(sb+"---> "+root.val);
-        preorder(root.left,root,sb);
-        preorder(root.right,root,sb);
-        sb.append(')');
+        else if(right.equals("")){
+            return root.val+"("+left+")";
+        }
+        return root.val+"("+left+")("+right+")";
     }
 }
