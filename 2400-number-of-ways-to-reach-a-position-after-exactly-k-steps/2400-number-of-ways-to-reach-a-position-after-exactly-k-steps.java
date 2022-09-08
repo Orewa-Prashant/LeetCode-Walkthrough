@@ -3,7 +3,7 @@ class Solution {
     //Map<String,Integer> map=new HashMap<>();
     
     public int numberOfWays(int startPos, int endPos, int k) {
-        Integer[][] dp=new Integer[3002][k+1];
+        Integer[][] dp=new Integer[2501][k+1];
         
         return fun(startPos,endPos,k,dp);
     }
