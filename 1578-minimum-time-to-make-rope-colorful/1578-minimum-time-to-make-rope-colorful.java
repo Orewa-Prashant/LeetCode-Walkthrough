@@ -14,7 +14,7 @@ class Solution {
                 pq.add(neededTime[j]);
                 j++;
             }
-            if(!pq.isEmpty())sum-=pq.poll();
+            sum-=pq.poll();
             pq.clear();
             i=j;
         }
