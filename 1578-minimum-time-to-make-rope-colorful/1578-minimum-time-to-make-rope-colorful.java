@@ -3,19 +3,19 @@ class Solution {
         int n=colors.length();
         int j=0;
         int sum=0;
-        PriorityQueue<Integer> pq=new PriorityQueue<>();
+        for(int i:neededTime)sum+=i;
+        PriorityQueue<Integer> pq=new PriorityQueue<>(Collections.reverseOrder());
         for(int i=0;i<n;){
             char ch=colors.charAt(i);
             j=i+1;
+            pq.add(neededTime[i]);
             while(j<n && colors.charAt(j)==ch){
-                if(j==i+1)pq.add(neededTime[i]);
+                //if(j==i+1)pq.add(neededTime[i]);
                 pq.add(neededTime[j]);
                 j++;
             }
-            while(pq.size()>1){
-                sum+=pq.poll();
-            }
-            if(!pq.isEmpty())pq.poll();
+            if(!pq.isEmpty())sum-=pq.poll();
+            pq.clear();
             i=j;
         }
         return sum;
