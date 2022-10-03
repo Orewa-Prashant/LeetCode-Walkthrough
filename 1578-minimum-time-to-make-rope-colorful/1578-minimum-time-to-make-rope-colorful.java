@@ -4,19 +4,20 @@ class Solution {
         int j=0;
         int sum=0;
         for(int i:neededTime)sum+=i;
-        PriorityQueue<Integer> pq;
+        // PriorityQueue<Integer> pq=new PriorityQueue<>(Collections.reverseOrder());
         for(int i=0;i<n;){
-            pq=new PriorityQueue<>(Collections.reverseOrder());
             char ch=colors.charAt(i);
             j=i+1;
-            pq.add(neededTime[i]);
+            // pq.add(neededTime[i]);
+            int max=neededTime[i];
             while(j<n && colors.charAt(j)==ch){
                 //if(j==i+1)pq.add(neededTime[i]);
-                pq.add(neededTime[j]);
-                j++;
+                // pq.add(neededTime[j]);
+                max=Math.max(max,neededTime[j++]);
             }
-            sum-=pq.poll();
+            // if(!pq.isEmpty())sum-=pq.poll();
             // pq.clear();
+            sum-=max;
             i=j;
         }
         return sum;
