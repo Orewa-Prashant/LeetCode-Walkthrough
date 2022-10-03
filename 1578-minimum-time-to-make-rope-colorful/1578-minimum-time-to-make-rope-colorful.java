@@ -1,25 +1,26 @@
 class Solution {
     public int minCost(String colors, int[] neededTime) {
-        int n=colors.length();
-        int j=0;
-        int sum=0;
-        for(int i:neededTime)sum+=i;
-        // PriorityQueue<Integer> pq=new PriorityQueue<>(Collections.reverseOrder());
-        for(int i=0;i<n;){
-            char ch=colors.charAt(i);
-            j=i+1;
-            // pq.add(neededTime[i]);
-            int max=neededTime[i];
-            while(j<n && colors.charAt(j)==ch){
-                //if(j==i+1)pq.add(neededTime[i]);
-                // pq.add(neededTime[j]);
-                max=Math.max(max,neededTime[j++]);
+        // Initalize two pointers i, j.
+        int totalTime = 0;
+        int i = 0, j = 0;
+        
+        while (i < neededTime.length && j < neededTime.length) {
+            int currTotal = 0, currMax = 0;
+            
+            // Find all the balloons having the same color as the 
+            // balloon indexed at i, record the total removal time 
+            // and the maximum removal time.
+            while (j < neededTime.length && colors.charAt(i) == colors.charAt(j)) {
+                currTotal += neededTime[j];
+                currMax = Math.max(currMax, neededTime[j]);
+                j++;
             }
-            // if(!pq.isEmpty())sum-=pq.poll();
-            // pq.clear();
-            sum-=max;
-            i=j;
+            
+            // Once we reach the end of the current group, add the cost of 
+            // this group to total_time, and reset two pointers.
+            totalTime += currTotal - currMax;
+            i = j;
         }
-        return sum;
+        return totalTime;    
     }
 }
