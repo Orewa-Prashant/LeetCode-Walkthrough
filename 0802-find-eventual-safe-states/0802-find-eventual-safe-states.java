@@ -1,7 +1,7 @@
 class Solution {
-    Set<Integer> set = new HashSet<>();
+    static Set<Integer> set;
     public List<Integer> eventualSafeNodes(int[][] graph) {
-        
+        set = new HashSet<>();
         int n=graph.length;
         boolean[] visited = new boolean[n];
         boolean[] pathVisited = new boolean[n];
@@ -20,9 +20,7 @@ class Solution {
         // System.out.println(node);
         pathVisited[node] = true;
         for(int next : graph[node]){
-            if(set.contains(next)){
-                continue;
-            }
+            if(set.contains(next))continue;
             if(!dfs(next, graph, visited, pathVisited))return false;            
         }
         set.add(node);
