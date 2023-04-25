@@ -3,7 +3,7 @@ class SmallestInfiniteSet {
 
     public SmallestInfiniteSet() {
         list = new LinkedList<>();
-        for(int i=1;i<=2001;i++)list.add(i);
+        for(int i=1;i<=1001;i++)list.add(i);
     }
     
     public int popSmallest() {
